@@ -3,7 +3,7 @@ import useNFTs from "./NftCard";
 import { mintNFT } from "../utilis/MintNfts";
 
 const MintComponent = () => {
-  const contractAddress = "0x28571421e389f0553b5c261dc33f7b22bbb1b0e3"; 
+  const contractAddress = "0x1dA04B1BC176F72E7D013385cDb23C34e11FB664"; 
   const { nfts, loading, error, connectWallet, userAddress } = useNFTs(contractAddress, "");
   const [selectedNFT, setSelectedNFT] = useState<string | null>(null);
   const [minting, setMinting] = useState<boolean>(false);
