@@ -56,6 +56,9 @@ interface NFT {
 
 const Nfts = () => {
   const [userAddress, setUserAddress] = useState<string | null>(null);
+  if(!userAddress){
+    console.error(`user address not found`);
+  }
   console.log("User Address:", userAddress);
   const { nfts, loading, error } = useNFTs(contractAddress, userAddress || "");
 
@@ -70,46 +73,12 @@ const Nfts = () => {
 
 fetch('https://worldchain-mainnet.g.alchemy.com/v2/gBrRL8GNZB7bQQh-RXdd3W1rAal7R_M8/getNFTsForOwner?owner=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&withMetadata=true&pageSize=100', options)
   .then(response => response.json())
-  .then(response => console.log(response))
+  .then(response => console.log(`error in response${response}`))
   .catch(err => console.error(err));
 
 
   
-  const mintNFT = async (nft: NFT) => {
-    if (!userAddress) {
-      console.error("Wallet not connected");
-      return;
-    }
-  
-    try {
-      // 1️ Request signature from the backend
-      const response = await fetch("https://your-backend.com/api/mint-request", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userAddress,
-          tokenId: nft.tokenId,
-          uri: nft.metadata.image, // IPFS URL or image link
-          originalContract: contractAddress,
-          originalTokenId: nft.tokenId,
-          chainId: 1, // Update with your network
-        }),
-      });
-  
-      const { signature, tokenId } = await response.json();
-      console.log("Received Signature:", signature);
-  
-      // 2️ Call the smart contract mint function
-      await mintOnBlockchain(tokenId, signature);
-    } catch (error) {
-      console.error("Error minting NFT:", error);
-    }
-  };
-  
-  const mintOnBlockchain = async (tokenId: string, signature: string) => {
-    console.log(`Minting NFT ${tokenId} with signature ${signature}`);
-    // TODO: Call smart contract mint function here
-  };
+
 
   useEffect(() => {
     async function fetchUserAddress() {
