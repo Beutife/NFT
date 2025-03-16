@@ -7,15 +7,17 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
+    "preview": "vite preview",
+    "start": "vite"
+  },  "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@metamask/sdk": "^0.32.0",
     "@rainbow-me/rainbowkit": "^2.2.3",
     "@tailwindcss/vite": "^4.0.7",
     "@tanstack/react-query": "^5.66.9",
+    "alchemy-sdk": "^3.5.4",
     "axios": "^1.7.9",
+    "buffer": "^6.0.3",
     "dotenv": "^16.4.7",
     "ethers": "^6.13.5",
     "ms": "^2.1.3",
