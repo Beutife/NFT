@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
+
 // Define context type
 interface WalletContextType {
   walletAddress: string | null;
@@ -37,7 +38,55 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-
+  // const switchToScroll = async () => {
+  //   if (!window.ethereum) {
+  //     console.error("MetaMask is not installed!");
+  //     return;
+  //   }
+  
+  //   try {
+  //     // Try switching to Scroll Sepolia
+  //     await window.ethereum.request({
+  //       method: "wallet_switchEthereumChain",
+  //       params: [{ chainId: "0x8274F" }], // Correct Scroll Sepolia Chain ID (534351)
+  //     });
+  
+  //     console.log("Switched to Scroll Sepolia successfully!");
+  //   } catch (error: any) {
+  //     console.error("Switching error:", error);
+  
+  //     // If the chain is not found, add it first
+  //     if (error.code === 4902) {
+  //       console.log("Scroll Sepolia not found, attempting to add it...");
+  
+  //       try {
+  //         await window.ethereum.request({
+  //           method: "wallet_addEthereumChain",
+  //           params: [
+  //             {
+  //               chainId: "0x8274F", // Correct chain ID for Scroll Sepolia
+  //               chainName: "Scroll Sepolia",
+  //               rpcUrls: ["https://scroll-sepolia.blockpi.network/v1/rpc/public"], // Make sure this URL is valid
+  //               nativeCurrency: {
+  //                 name: "Ethereum",
+  //                 symbol: "ETH",
+  //                 decimals: 18,
+  //               },
+  //               blockExplorerUrls: ["https://sepolia.scrollscan.com/"],
+  //             },
+  //           ],
+  //         });
+  
+  //         console.log("Scroll Sepolia added successfully!");
+  //       } catch (addError) {
+  //         console.error("Failed to add Scroll Sepolia:", addError);
+  //       }
+  //     }
+  //   }
+  // };
+  
+  
+  
   // Function to check if a wallet is already connected
   const getCurrentWalletConnected = async () => {
     if (window.ethereum) {
@@ -47,6 +96,12 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
           setWalletAddress(accounts[0]);
           localStorage.setItem("walletAddress", accounts[0]);
         }
+
+      //   const chainId = await window.ethereum.request({ method: "eth_chainId" });
+      // if (chainId !== "0x82750") {  // Scroll Sepolia Chain ID
+      //   switchToScroll();
+      // }
+
       } catch (error) {
         console.error("Error fetching wallet:", error);
       }
@@ -56,6 +111,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     getCurrentWalletConnected();
     addWalletListener();
+    //switchToScroll();
   }, []);
 
   
