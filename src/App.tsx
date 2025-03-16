@@ -6,7 +6,7 @@ import { metaMask } from "wagmi/connectors";
 import Home from "./pages/Home";
 import LastPage from "./pages/LastPage";
 import SelectNft from "./pages/SelectNft";
-import Nfts from "./pages/Nfts";
+import Nfts from "./components/NftCard";
 import { WalletProvider } from "../src/context/WalletContext"; 
 import "./App.css";
 

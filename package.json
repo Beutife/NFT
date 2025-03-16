@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
+    "preview": "vite preview",
+    "start": "vite"
+  },  "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@metamask/sdk": "^0.32.0",
     "@rainbow-me/rainbowkit": "^2.2.3",

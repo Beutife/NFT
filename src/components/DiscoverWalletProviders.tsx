@@ -2,7 +2,6 @@ import {  Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useSyncProviders } from "../hooks/useSyncProviders";
 import { useWallet } from "../context/WalletContext"; 
-import { checkNetwork } from "../utilis/networkUtils"; 
 import { useNavigate } from "react-router-dom";
 
 interface DiscoverWalletProvidersProps {
@@ -32,8 +31,6 @@ export const DiscoverWalletProviders: React.FC<DiscoverWalletProvidersProps> = (
             }
           });
         }
-
-        const currentChain = await checkNetwork();
         // if (currentChain !== "0x82750") {
         //   const confirmSwitch = window.confirm("You're not on the Scroll network. Do you want to switch?");
         //   if (confirmSwitch) {
@@ -79,7 +76,7 @@ export const DiscoverWalletProviders: React.FC<DiscoverWalletProvidersProps> = (
               )}
             </div>
 
-            {/* Close Button */}
+           
             <div className="mt-4 flex justify-center">
               <button
                 onClick={onClose}

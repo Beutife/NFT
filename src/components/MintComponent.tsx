@@ -1,4 +1,4 @@
-import { useState } from "react";
+/* import { useState } from "react";
 import useNFTs from "./NftCard";
 import { mintNFT } from "../utilis/MintNfts";
 
@@ -53,3 +53,4 @@ const MintComponent = () => {
 };
 
 export default MintComponent;
+ */
